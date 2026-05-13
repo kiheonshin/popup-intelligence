@@ -155,11 +155,6 @@ button { font-family: inherit; cursor: pointer; }
   padding: 12px 14px;
   position: relative;
 }
-.kpi::before {
-  content: '';
-  position: absolute; top: 0; left: 0; width: 16px; height: 1px;
-  background: var(--accent);
-}
 .kpi .label {
   font-family: var(--mono);
   font-size: 0.68rem;
@@ -220,23 +215,28 @@ button { font-family: inherit; cursor: pointer; }
   color: var(--accent);
   border-bottom-color: var(--accent);
 }
-.nav button .ico { font-size: 1rem; }
+.nav button .ico {
+  width: 16px; height: 16px;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+.nav button .ico svg { width: 100%; height: 100%; stroke: currentColor; fill: none; }
 
 /* ===== Views ===== */
 main { padding: 28px 0 80px; }
 .view { display: none; }
 .view.active { display: block; }
 .view > h2 {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 6px;
+  font-size: 1.5rem;
+  margin: 32px 0 10px;
+  letter-spacing: -0.015em;
 }
 .view .view-desc {
   color: var(--text-soft);
-  margin-bottom: 24px;
-  font-size: 0.92rem;
+  margin-bottom: 32px;
+  font-size: 0.95rem;
   max-width: 720px;
+  line-height: 1.6;
 }
 
 /* Cards */
@@ -245,13 +245,6 @@ main { padding: 28px 0 80px; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 18px 20px;
-  position: relative;
-}
-.card::before {
-  content: '';
-  position: absolute; top: 0; left: 16px; width: 24px; height: 1px;
-  background: linear-gradient(90deg, var(--accent-rim), transparent);
-  opacity: 0.8;
 }
 .card-title {
   font-family: var(--mono);
@@ -369,12 +362,6 @@ input[type="text"]:focus { border-color: var(--accent-rim); }
   border-radius: var(--radius);
   padding: 14px 16px;
   position: relative;
-}
-.dash-kpi::before {
-  content: '';
-  position: absolute; top: 0; left: 16px; width: 24px; height: 1px;
-  background: var(--accent);
-  opacity: 0.6;
 }
 .dash-kpi .label {
   font-family: var(--mono);
@@ -499,17 +486,11 @@ tbody tr:hover { background: rgba(194,255,119,0.04); }
   transition: all .3s;
   position: relative;
 }
-.story-step::before {
-  content: '';
-  position: absolute; top: 0; left: 14px; width: 24px; height: 1px;
-  background: var(--border-strong);
-}
 .story-step.active {
   border-left-color: var(--accent);
   box-shadow: 0 0 0 1px var(--accent-rim), 0 0 30px rgba(194,255,119,0.08);
   transform: translateX(4px);
 }
-.story-step.active::before { background: var(--accent); }
 .story-step .chapter {
   font-family: var(--mono);
   font-size: 0.72rem;
@@ -631,11 +612,6 @@ tbody tr:hover { background: rgba(194,255,119,0.04); }
   padding: 20px;
   position: relative;
 }
-.district-info::before {
-  content: '';
-  position: absolute; top: 0; left: 16px; width: 24px; height: 1px;
-  background: var(--accent);
-}
 .district-info h3 {
   margin-bottom: 6px;
   font-family: var(--display);
@@ -683,20 +659,16 @@ tbody tr:hover { background: rgba(194,255,119,0.04); }
   position: relative;
   overflow: hidden;
 }
-.info-stat::before {
-  content: '';
-  position: absolute; top: 0; left: 16px; width: 28px; height: 1px;
-}
-.info-stat.up::before    { background: var(--accent); }
-.info-stat.down::before  { background: var(--coral); }
-.info-stat.note::before  { background: var(--sky); }
-.info-stat.flat::before  { background: var(--amber); }
-
 .info-stat .icon {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  opacity: 0.8;
+  width: 22px; height: 22px;
+  color: var(--muted);
+  margin-bottom: 12px;
+  display: block;
 }
+.info-stat.up .icon   { color: var(--accent); }
+.info-stat.down .icon { color: var(--coral); }
+.info-stat.note .icon { color: var(--sky); }
+.info-stat.flat .icon { color: var(--amber); }
 .info-stat .label {
   font-family: var(--mono);
   font-size: 0.7rem;
@@ -828,10 +800,10 @@ footer a { color: var(--text-soft); }
 <div class="nav-wrap">
   <div class="container">
     <nav class="nav" id="nav">
-      <button class="active" data-view="dashboard"><span class="ico">📊</span> 대시보드</button>
-      <button data-view="story"><span class="ico">📖</span> 스토리</button>
-      <button data-view="map"><span class="ico">🗺️</span> 지도</button>
-      <button data-view="impact"><span class="ico">💸</span> 상권 영향</button>
+      <button class="active" data-view="dashboard"><span class="ico"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg></span> 대시보드</button>
+      <button data-view="story"><span class="ico"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A2.5 2.5 0 016.5 2H20v18H6.5a2.5 2.5 0 100 5H20"/></svg></span> 스토리</button>
+      <button data-view="map"><span class="ico"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4l-6 2v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></span> 지도</button>
+      <button data-view="impact"><span class="ico"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span> 상권 영향</button>
     </nav>
   </div>
 </div>
@@ -840,7 +812,7 @@ footer a { color: var(--text-soft); }
 
   <!-- ====================== VIEW 1: DASHBOARD ====================== -->
   <section class="view active" id="view-dashboard">
-    <h2>📊 인터랙티브 대시보드</h2>
+    <h2>인터랙티브 대시보드</h2>
     <p class="view-desc">연도·카테고리·국적·지역을 골라가며 데이터를 직접 탐색하세요. 모든 차트와 테이블이 함께 갱신됩니다.</p>
 
     <div class="dash-layout">
@@ -961,7 +933,7 @@ footer a { color: var(--text-soft); }
 
   <!-- ====================== VIEW 2: STORY ====================== -->
   <section class="view" id="view-story">
-    <h2>📖 성수동 팝업 10년의 스토리</h2>
+    <h2>성수동 팝업 10년의 스토리</h2>
     <p class="view-desc">스크롤하면 우측 차트가 시기에 맞춰 갱신됩니다. 6개 챕터로 성수동이 어떻게 팝업 성지가 되었는지 따라가 보세요.</p>
 
     <div class="story-layout">
@@ -1062,7 +1034,7 @@ footer a { color: var(--text-soft); }
 
   <!-- ====================== VIEW 3: MAP ====================== -->
   <section class="view" id="view-map">
-    <h2>🗺️ 성수동 구역별 지도</h2>
+    <h2>성수동 구역별 지도</h2>
     <p class="view-desc">원의 크기는 해당 구역의 팝업 수. 마커를 클릭하면 우측에 상세 정보가 나타납니다. 카테고리 필터로 분포 변화를 비교할 수 있습니다.</p>
 
     <div style="margin-bottom:14px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
@@ -1094,33 +1066,33 @@ footer a { color: var(--text-soft); }
 
   <!-- ====================== VIEW 4: IMPACT ====================== -->
   <section class="view" id="view-impact">
-    <h2>💸 상권 영향 인포그래픽</h2>
+    <h2>상권 영향 인포그래픽</h2>
     <p class="view-desc">팝업이 만든 경제 효과와 그 그림자. 11년의 성장 곡선, 임대료 폭등, 외국인 유입, 그리고 폐업의 동시 증가를 한눈에.</p>
 
     <div class="info-grid">
       <div class="info-stat up">
-        <div class="icon">💰</div>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
         <div class="label">경제적 가치</div>
         <div class="big">+255%</div>
         <div class="delta">4,364억 → 1조5,497억 (2014→2024)</div>
         <div class="desc">한양대 산학협력단 분석</div>
       </div>
       <div class="info-stat up">
-        <div class="icon">🌏</div>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>
         <div class="label">외국인 방문객</div>
         <div class="big">×50</div>
         <div class="delta">6만 → 300만 명 (2018→2024)</div>
         <div class="desc">K-뷰티·K-패션 필수 코스로 자리매김</div>
       </div>
       <div class="info-stat down">
-        <div class="icon">🏠</div>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
         <div class="label">임대료 (5년)</div>
         <div class="big">+48%</div>
         <div class="delta">서울 평균 16% 대비 3배</div>
         <div class="desc">연무장길 28㎡ 월세 2,400만원</div>
       </div>
       <div class="info-stat down">
-        <div class="icon">⚠️</div>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v5M12 18h.01"/></svg>
         <div class="label">폐업 건수</div>
         <div class="big">×2.1</div>
         <div class="delta">86 → 180건 (2021→2024)</div>
@@ -1151,7 +1123,7 @@ footer a { color: var(--text-soft); }
     </div>
 
     <div class="info-insight">
-      <h3>💡 결론 — 성장과 위기가 공존하는 전환점</h3>
+      <h3>결론 — 성장과 위기가 공존하는 전환점</h3>
       <p>
         성수동은 4단계 젠트리피케이션의 정점에 있습니다. 임대료 폭등으로 소상공인이 이탈하고 대기업 브랜드가
         대체하는 양극화가 심화되고 있으며, 2025년부터는 팝업 트렌드가 유통사 쇼핑몰로 이동하는 ‘탈성수’ 현상이
