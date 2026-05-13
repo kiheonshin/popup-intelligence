@@ -1617,7 +1617,10 @@ function initStory() {
   });
 
   const fillEl = document.getElementById('story-fill');
+  let currentIdx = -1;
   function activate(idx) {
+    if (idx === currentIdx) return;       // idempotent — skip if already active
+    currentIdx = idx;
     steps.forEach((s, i) => s.classList.toggle('active', i === idx));
     dots.forEach((d, i) => {
       d.classList.toggle('active', i === idx);
@@ -1636,19 +1639,30 @@ function initStory() {
   }
   activate(0);
 
-  const obs = new IntersectionObserver(entries => {
-    if (navLocked) return;
-    // pick the entry with highest ratio that is intersecting
-    let best = null;
-    entries.forEach(e => {
-      if (e.isIntersecting && (!best || e.intersectionRatio > best.intersectionRatio)) best = e;
+  // Pick whichever step is closest to viewport center on every scroll frame.
+  // This is single-valued and monotonic (no threshold flapping like IntersectionObserver).
+  let raf = null;
+  function updateActiveFromScroll() {
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      raf = null;
+      if (navLocked) return;
+      if (!document.getElementById('view-story').classList.contains('active')) return;
+      const vpCenter = window.innerHeight / 2;
+      let bestIdx = 0, bestDist = Infinity;
+      for (let i = 0; i < steps.length; i++) {
+        const r = steps[i].getBoundingClientRect();
+        const c = r.top + r.height / 2;
+        const dist = Math.abs(c - vpCenter);
+        if (dist < bestDist) { bestDist = dist; bestIdx = i; }
+      }
+      activate(bestIdx);
     });
-    if (best) {
-      const idx = steps.indexOf(best.target);
-      if (idx >= 0) activate(idx);
-    }
-  }, { threshold: [0.35, 0.55, 0.75] });
-  steps.forEach(s => obs.observe(s));
+  }
+  window.addEventListener('scroll', updateActiveFromScroll, { passive: true });
+  window.addEventListener('resize', updateActiveFromScroll);
+  // Fire once after layout so the initial position is correct
+  setTimeout(updateActiveFromScroll, 0);
 }
 function drawStoryChart(range) {
   let title = '연도별 팝업 수 (전 기간)';
