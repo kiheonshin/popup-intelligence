@@ -473,9 +473,9 @@ tbody tr:hover { background: rgba(194,255,119,0.04); }
 .story-text {
   display: flex;
   flex-direction: column;
-  gap: 50vh;
-  padding-top: 10vh;
-  padding-bottom: 30vh;
+  gap: 22vh;
+  padding-top: 4vh;
+  padding-bottom: 12vh;
 }
 .story-step {
   background: var(--surface);
@@ -483,13 +483,15 @@ tbody tr:hover { background: rgba(194,255,119,0.04); }
   border-left: 3px solid transparent;
   border-radius: var(--radius);
   padding: 22px 24px;
-  transition: all .3s;
+  transition: opacity .3s, border-color .3s, box-shadow .3s;
   position: relative;
+  opacity: 0.45;
 }
+.story-step:hover { opacity: 0.85; }
 .story-step.active {
+  opacity: 1;
   border-left-color: var(--accent);
   box-shadow: 0 0 0 1px var(--accent-rim), 0 0 30px rgba(194,255,119,0.08);
-  transform: translateX(4px);
 }
 .story-step .chapter {
   font-family: var(--mono);
@@ -539,13 +541,53 @@ tbody tr:hover { background: rgba(194,255,119,0.04); }
 .story-sticky {
   position: sticky;
   top: 80px;
-  height: calc(100vh - 110px);
+  height: min(620px, calc(100vh - 110px));
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
-.story-sticky .card { flex: 1; display: flex; flex-direction: column; }
-.story-sticky .chart-box { flex: 1; height: auto; }
+.story-sticky .card { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+.story-sticky .chart-box { flex: 1; height: auto; min-height: 0; }
+
+/* Chapter progress rail — shown alongside the sticky chart */
+.chapter-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.chapter-rail .rail-label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.chapter-rail .dots { display: flex; align-items: center; gap: 6px; }
+.chapter-rail .dot {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border-strong);
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+.chapter-rail .dot:hover { background: var(--accent-rim); }
+.chapter-rail .dot.active { background: var(--accent); transform: scaleY(1.6); }
+.chapter-rail .current-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-soft);
+  letter-spacing: 0.06em;
+  margin-top: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+.chapter-rail .current-label .num { color: var(--accent); font-weight: 600; }
 
 /* ===== Map ===== */
 .map-layout {
@@ -789,7 +831,7 @@ footer a { color: var(--text-soft); }
       </div>
       <div class="kpi">
         <div class="label">경제적 가치</div>
-        <div class="value">1.55兆</div>
+        <div class="value">1.55조원</div>
         <div class="sub">2014 대비 3.5배 (2024)</div>
       </div>
     </div>
@@ -1024,6 +1066,14 @@ footer a { color: var(--text-soft); }
       </div>
 
       <div class="story-sticky">
+        <div class="chapter-rail">
+          <div class="rail-label">Chapter Progress</div>
+          <div class="dots" id="story-dots"></div>
+          <div class="current-label">
+            <span id="story-current-name">CHAPTER 01 · 태동기</span>
+            <span><span class="num" id="story-current-num">01</span> / 06</span>
+          </div>
+        </div>
         <div class="card">
           <div class="card-title"><span id="story-chart-title">연도별 팝업 수 (전 기간)</span></div>
           <div class="chart-box" id="story-chart"></div>
@@ -1494,17 +1544,46 @@ refreshDashboard();
 let storyInitialized = false;
 function initStory() {
   storyInitialized = true;
-  drawStoryChart('all');
-  // intersection observer for steps
-  const steps = document.querySelectorAll('#story-steps .story-step');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting && e.intersectionRatio > 0.4) {
-        steps.forEach(s => s.classList.toggle('active', s === e.target));
-        drawStoryChart(e.target.dataset.range);
-      }
+  const steps = Array.from(document.querySelectorAll('#story-steps .story-step'));
+
+  // Build progress dots (one per chapter)
+  const dotsHost = document.getElementById('story-dots');
+  const dots = steps.map((s, i) => {
+    const d = document.createElement('span');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.title = (s.querySelector('.chapter')?.textContent || '') + ' — ' + (s.querySelector('h3')?.textContent || '');
+    d.addEventListener('click', () => {
+      s.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
-  }, { threshold: [0.4, 0.6, 0.8] });
+    dotsHost.appendChild(d);
+    return d;
+  });
+
+  function activate(idx) {
+    steps.forEach((s, i) => s.classList.toggle('active', i === idx));
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    const step = steps[idx];
+    if (step) {
+      const chapter = step.querySelector('.chapter')?.textContent || '';
+      const title   = step.querySelector('h3')?.textContent || '';
+      document.getElementById('story-current-name').textContent = chapter.split('·')[0].trim() + ' · ' + title.split('—')[0].trim();
+      document.getElementById('story-current-num').textContent = String(idx + 1).padStart(2, '0');
+      drawStoryChart(step.dataset.range);
+    }
+  }
+  activate(0);
+
+  const obs = new IntersectionObserver(entries => {
+    // pick the entry with highest ratio that is intersecting
+    let best = null;
+    entries.forEach(e => {
+      if (e.isIntersecting && (!best || e.intersectionRatio > best.intersectionRatio)) best = e;
+    });
+    if (best) {
+      const idx = steps.indexOf(best.target);
+      if (idx >= 0) activate(idx);
+    }
+  }, { threshold: [0.35, 0.55, 0.75] });
   steps.forEach(s => obs.observe(s));
 }
 function drawStoryChart(range) {
@@ -1711,7 +1790,7 @@ function initImpact() {
     x: eYears, y: eVals, type: 'scatter', mode: 'lines+markers+text',
     line: { color: COLORS.navy, width: 4 },
     marker: { color: COLORS.navy, size: 18, line: { color: '#0c1016', width: 2 } },
-    text: eVals.map(v => v >= 10000 ? (v/10000).toFixed(2) + '兆' : v.toLocaleString() + '억'),
+    text: eVals.map(v => v >= 10000 ? (v/10000).toFixed(2) + '조원' : v.toLocaleString() + '억원'),
     textposition: 'top center', textfont: { size: 13, family: 'IBM Plex Sans KR' },
     hovertemplate: '%{x}년<br>경제적 가치 <b>%{y:,}억원</b><extra></extra>',
   }], {
