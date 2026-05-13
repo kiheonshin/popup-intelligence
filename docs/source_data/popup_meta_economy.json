@@ -1,0 +1,443 @@
+{
+  "metadata": {
+    "title": "성수동 팝업 스토어 상권 영향 및 상권 변화 데이터",
+    "description": "성수동 팝업 스토어가 상권에 미친 영향과 연도별 상권 변화 데이터",
+    "collected_date": "2025-07-16",
+    "data_period": "2014-2025",
+    "district": "성수동 (성동구)",
+    "sub_districts": ["연무장길", "뚝섬역", "성수역 북단", "서울숲"]
+  },
+  "yearly_data": [
+    {
+      "year": 2014,
+      "district": "성수동",
+      "avg_rent_per_sqm": 11000,
+      "rent_change_rate": 0,
+      "business_count": 20042,
+      "business_revenue_trillion": 24.2,
+      "visitor_domestic_million": null,
+      "visitor_foreign": null,
+      "popup_count": null,
+      "closed_stores": null,
+      "vacancy_rate": null,
+      "economic_value_billion": 4364,
+      "workers_count": null,
+      "public_land_price_per_sqm": 3210000,
+      "key_changes": [
+        "성동구 도시재생 사업 시작",
+        "성수IT유통개발진흥지구 지정",
+        "공장 쇠퇴, 저렴한 임대료",
+        "붉은 벽돌 건축물 보존 시작"
+      ],
+      "sources": ["성동구청", "한양대 산학협력단"]
+    },
+    {
+      "year": 2015,
+      "district": "성수동",
+      "avg_rent_per_sqm": 12000,
+      "rent_change_rate": 9.1,
+      "business_count": null,
+      "it_companies": 279,
+      "popup_count": null,
+      "closed_stores": null,
+      "vacancy_rate": null,
+      "key_changes": [
+        "IT 기업 유입 시작",
+        "성수동 상권 변화 초기 단계"
+      ],
+      "sources": ["성동구청"]
+    },
+    {
+      "year": 2016,
+      "district": "성수동",
+      "avg_rent_per_sqm": 15000,
+      "rent_change_rate": 25.0,
+      "popup_count": null,
+      "closed_stores": null,
+      "key_changes": [
+        "성동구, 지속가능발전구역 지정 시작 (젠트리피케이션 방지)",
+        "대림창고 등 문화 공간 인기 상승"
+      ],
+      "sources": ["성동구청", "오피니언뉴스"]
+    },
+    {
+      "year": 2017,
+      "district": "성수동",
+      "avg_rent_per_sqm": 18000,
+      "rent_change_rate": 20.0,
+      "popup_count": null,
+      "hourly_visitor_foreign": 93,
+      "key_changes": [
+        "인스타그래머블 공간으로 입소문 시작",
+        "예술가, 디자이너 스튜디오 유입"
+      ],
+      "sources": ["한국관광공사", "동아일보"]
+    },
+    {
+      "year": 2018,
+      "district": "성수동",
+      "avg_rent_per_sqm": 22000,
+      "rent_change_rate": 22.2,
+      "visitor_domestic_million": 19.93,
+      "visitor_foreign": 60000,
+      "foreign_tourist_spending_billion": 13.3,
+      "popup_count": null,
+      "key_changes": [
+        "서울숲 개장 후 관광객 유입 가속화",
+        "K-컬처 붐 시작",
+        "성수동 핫플레이스 인지도 상승"
+      ],
+      "sources": ["한국관광데이터랩", "성동구청"]
+    },
+    {
+      "year": 2019,
+      "district": "성수동",
+      "avg_rent_per_sqm": 26000,
+      "rent_change_rate": 18.2,
+      "popup_count": null,
+      "key_changes": [
+        "팝업 스토어 유입 시작",
+        "카페, 갤러리 상권 형성"
+      ],
+      "sources": ["어패럴리뉴스"]
+    },
+    {
+      "year": 2020,
+      "district": "성수동",
+      "avg_rent_per_sqm": 32800,
+      "rent_change_rate": 26.2,
+      "avg_rent_per_pyeong": 108877,
+      "business_count": null,
+      "popup_count": null,
+      "vacancy_rate": 2.5,
+      "key_changes": [
+        "코로나19로 인한 팝업 감소",
+        "성수2가3동 평당 임대료 10만8,877원",
+        "공실률 2.5%"
+      ],
+      "sources": ["무신사", "서울시 상권분석서비스"]
+    },
+    {
+      "year": 2021,
+      "district": "성수동",
+      "avg_rent_per_sqm": 38100,
+      "avg_rent_3_3sqm": 125731,
+      "rent_change_rate": 16.2,
+      "popup_count_yeonmujang": 7,
+      "popup_count_total": null,
+      "floating_population_per_sqm": 19.45,
+      "sales_per_sqm_ten_thousand": 48.71,
+      "closed_stores": 86,
+      "vacancy_rate": null,
+      "key_changes": [
+        "소수 팝업스토어 특정 공간에 한정적으로 등장",
+        "제품 판매와 브랜드 홍보 목적 팝업",
+        "음식점 폐업위험도 일반점포 대비 4.59배"
+      ],
+      "sources": ["한국부동산원", "행정안전부", "KAOPG 연구"]
+    },
+    {
+      "year": 2022,
+      "district": "성수동",
+      "avg_rent_per_sqm": 47200,
+      "avg_rent_3_3sqm": 155729,
+      "rent_change_rate": 23.9,
+      "business_count": 20321,
+      "popup_count_yeonmujang": 10,
+      "popup_count_total": null,
+      "floating_population_per_sqm": 20.13,
+      "sales_per_sqm_ten_thousand": 72.58,
+      "closed_stores": 84,
+      "vacancy_rate": null,
+      "key_changes": [
+        "코로나19 회복과 함께 대형 브랜드 팝업 집중 출현",
+        "카페거리 중심 연무장길 팝업 성지화 시작",
+        "유동인구 증가 → 폐업위험 4% 감소 (유인효과)",
+        "명품 브랜드 중심 팝업, 안테나 역할",
+        "음식점 폐업위험도 5.53배"
+      ],
+      "sources": ["한국부동산원", "서울시 상권분석서비스", "KAOPG 연구"]
+    },
+    {
+      "year": 2023,
+      "district": "성수동",
+      "avg_rent_per_sqm": 59100,
+      "avg_rent_3_3sqm": 194976,
+      "rent_change_rate": 25.2,
+      "rent_per_pyeong_seongsu2ga3dong": 149777,
+      "rent_change_5yr_rate": 48,
+      "seoul_rent_change_5yr_rate": 16,
+      "business_count": null,
+      "popup_count_yeonmujang": 84,
+      "popup_count_total": 1713,
+      "floating_population_per_sqm": 20.66,
+      "sales_per_sqm_ten_thousand": 71.77,
+      "closed_stores": 129,
+      "vacancy_rate": null,
+      "commercial_building_ratio": 57.56,
+      "franchise_ratio": 12.7,
+      "gentrification_policy": "2023년 8월 지속가능발전구역 추가 지정 (성수동 1-1,1-2,2-1,2-2 / 225만㎡)",
+      "key_changes": [
+        "팝업스토어 개최 건수 전년 대비 약 10배 급증",
+        "성수동 전역으로 팝업 확산",
+        "중저가 브랜드 팝업 다양화",
+        "임대료 급등 정점 (3.3㎡당 194,976원)",
+        "유동인구 증가 → 폐업위험 증가 (젠트리피케이션 심화)",
+        "음식점 폐업위험도 일반점포와 유사해짐 (1.14배)",
+        "프랜차이즈 폐업위험도 역전 (2.76배)",
+        "상업용 건축물 비율 57.56%"
+      ],
+      "sources": ["무신사", "팝가(POPGA)", "KAOPG 연구", "성동구청"]
+    },
+    {
+      "year": 2024,
+      "district": "성수동",
+      "avg_rent_per_sqm": 47700,
+      "avg_rent_3_3sqm": 157314,
+      "rent_change_rate": -19.3,
+      "economic_value_billion": 15497,
+      "economic_value_increase_since_2014": 35300,
+      "business_count": 19200,
+      "business_count_increase_since_2014_rate": 78,
+      "business_revenue_trillion": 51.2,
+      "workers_count": 124923,
+      "workers_increase_since_2014_rate": 51,
+      "visitor_domestic_million": 26.20,
+      "visitor_domestic_increase_since_2018_rate": 31,
+      "visitor_foreign": 3000000,
+      "visitor_foreign_increase_since_2018_rate": 5000,
+      "foreign_tourist_spending_billion": 198.9,
+      "foreign_tourist_spending_increase_since_2018_rate": 1495,
+      "popup_count_yeonmujang": 112,
+      "popup_count_total": 3077,
+      "popup_count_national_share_percent": 35.38,
+      "popup_count_seongsu_first_half": 197,
+      "popup_count_seongsu_share_percent": 32.1,
+      "floating_population_per_sqm": 20.11,
+      "sales_per_sqm_ten_thousand": 68.69,
+      "closed_stores": 180,
+      "store_count_q2": 19686,
+      "store_decrease_since_2022": 700,
+      "vacancy_rate": 2.9,
+      "seoul_avg_vacancy_rate_excl_seongsu": 16.6,
+      "public_land_price_per_sqm": 6800000,
+      "public_land_price_increase_rate": 111.8,
+      "commercial_building_ratio": 61.52,
+      "franchise_ratio": 10.4,
+      "popup_daily_rent_range": {
+        "small_21_pyeong": 3000000,
+        "large_400_pyeong": 115000000
+      },
+      "popup_weekly_rent_300_pyeong": "100000000-200000000",
+      "key_changes": [
+        "팝업스토어 전국 3,077건 (전년 대비 80% 증가)",
+        "성수동 팝업 35.38% 집중, 팝업 성지 굳건",
+        "임대료 정점 대비 하락 (버블 조정)",
+        "폐업 건수 180건 (4년 연속 증가)",
+        "점포 수 20,321개 → 19,686개 (700개 감소)",
+        "외국인 관광객 300만명 돌파",
+        "경제적 가치 1조5,497억원 (2014년 대비 3.5배)",
+        "공시지가 ㎡당 680만원 (2014년 대비 2배)",
+        "유동인구 증가 → 폐업위험 1% 증가 (구매전환 저조)",
+        "음식점 폐업위험도 2.55배",
+        "상업용 건축물 비율 61.52% (급증)",
+        "성수 1가 37평 구걸물 130억원 역대 최고가",
+        "무신사 서울숲 프로젝트 시작 (젠트리피케이션 대응)"
+      ],
+      "sources": [
+        "성동구청",
+        "한양대 산학협력단",
+        "팝가(POPGA)",
+        "스위트스팟",
+        "한국관광데이터랩",
+        "서울시 상권분석서비스",
+        "머니투데이",
+        "TIN뉴스",
+        "어패럴리뉴스",
+        "KAOPG 연구"
+      ]
+    },
+    {
+      "year": 2025,
+      "district": "성수동",
+      "rent_price_index_increase_rate": 109.1,
+      "rent_rank_national": 1,
+      "hourly_visitor_foreign": 2257,
+      "visitor_foreign_increase_since_2017_rate": 2400,
+      "foreign_tourist_first_half_lgu": 910000,
+      "public_land_price_increase_rate": 5.43,
+      "popup_count_total_estimate": 3500,
+      "key_changes": [
+        "임대가격지수 상승률 109.1% 전국 1위",
+        "연무장길 28㎡ 1층 월세 2,400만원 (평당 280만원)",
+        "서울 평균 임대료 대비 16배",
+        "시간당 외국인 방문객 2,257명 (2017년 대비 24배)",
+        "성수동 팝업 스토어 대관료 주말 3일 1억원+",
+        "탈성수 현상 시작 (유통사 팝업 비중 43%로 성수동 28% 추월)",
+        "버버리, 아디다스 등 지역점령형 팝업 등장",
+        "외국인 관광객 상반기 91만명 (전년 동기 33만명 대비 3배)",
+        "상권 포화도 증가, 소비자 피로도 상승",
+        "성수동→대형 쇼핑몰 팝업 트렌드 이동 시작"
+      ],
+      "sources": [
+        "한국부동산원",
+        "쿠시먼앤드웨이크필드",
+        "동아일보",
+        "LGU+ 데이터플러스",
+        "스위트스팟",
+        "성수교과서",
+        "이코노미스트"
+      ]
+    }
+  ],
+  "key_trends": {
+    "rent_surge": {
+      "description": "팝업스토어 유입으로 인한 임대료 폭등",
+      "2020_avg_rent_per_pyeong": 108877,
+      "2024_avg_rent_per_pyeong": 149777,
+      "2025_q1_rent_index_increase_rate": 109.1,
+      "seoul_avg_rent_per_pyeong": 170000,
+      "yeonmujang_prime_rent_per_pyeong": 2800000,
+      "impact": "서울 평균 대비 16배 이상, 영세 자영업자 이탈 가속"
+    },
+    "gentrification": {
+      "description": "젠트리피케이션 가속화",
+      "stages": [
+        "낙후 공업지대 → 저렴한 임대료",
+        "예술가/창업자 유입 → 입소문",
+        "유동인구 증가 → 지역가치 상승",
+        "대형 브랜드/팝업 유입 → 임대료 폭등",
+        "원주민/소상공인 이탈 → 상권 정체성 상실 위험"
+      ],
+      "shoe_stores_2023q2": 99,
+      "shoe_stores_2024q2": 93,
+      "shoe_stores_2025q2": 94,
+      "policy_response": "지속가능발전구역 지정(2016년~), 상가임대차보호법 5% 제한(팝업 제외)"
+    },
+    "popup_ecosystem": {
+      "description": "팝업스토어 생태계 형성",
+      "2024_total_national": 3077,
+      "2024_seongdong_share": "35.38%",
+      "2024_seongsu_first_half": 197,
+      "2024_seongsu_share": "32.1%",
+      "category_breakdown": {
+        "fashion": "25.87%",
+        "ip_character": "16.74%",
+        "fnb": "12.67%"
+      },
+      "trend_shift": "성수동 중심(28%) → 유통사 팝업(43%)으로 무게중심 이동"
+    },
+    "foreign_tourism": {
+      "description": "외국인 관광객 폭증",
+      "2018_domestic_million": 19.93,
+      "2024_domestic_million": 26.20,
+      "2018_foreign": 60000,
+      "2024_foreign": 3000000,
+      "2024_foreign_spending_billion": 198.9,
+      "2017_hourly_foreign_visitor": 93,
+      "2025_hourly_foreign_visitor": 2257,
+      "growth_since_2017": "24배"
+    },
+    "economic_impact": {
+      "description": "성수동 경제적 가치 급증",
+      "economic_value_2014_billion": 4364,
+      "economic_value_2024_billion": 15497,
+      "total_increase_10yr_trillion": 33.3,
+      "business_revenue_2014_trillion": 24.2,
+      "business_revenue_2023_trillion": 51.2,
+      "business_count_2014": 20042,
+      "business_count_2023": 34381,
+      "workers_2014": 82747,
+      "workers_2023": 124923,
+      "card_sales_2014_billion": 637,
+      "card_sales_2024_billion": 2384
+    },
+    "business_closures": {
+      "description": "폐업 증가와 상권 양극화",
+      "closure_data": {
+        "2021": 86,
+        "2022": 84,
+        "2023": 129,
+        "2024": 180
+      },
+      "store_count_2022q2": 20321,
+      "store_count_2024q2": 19686,
+      "closure_rate_2024": 0.11,
+      "key_factor": "임대료 상승으로 인한 소상공인 이탈, 대기업 브랜드 대체"
+    }
+  },
+  "expert_opinions": [
+    {
+      "expert": "남신구 쿠시먼앤드웨이크필드 코리아 이사",
+      "quote": "성수 상권은 부티크형 소형 브랜드와 F&B 매장, 기존 공장 부지를 활용한 대형 플래그십 스토어가 혼재하는 독특한 구조를 가지고 있다. 무신사의 복합 매장은 선순환 구조를 더욱 공고히 하면서 향후 3년간은 안정적인 메가 상권을 유지할 것.",
+      "source": "대한경제"
+    },
+    {
+      "expert": "김은미 스위트스팟 이사",
+      "quote": "무신사, 올리브영 등 대형 브랜드들이 지속적으로 다양한 콘텐츠를 선별해 선보이면서 테마파크적 매력을 유지하는 게 성수의 특징. 현재로서는 성수동의 영향력을 넘어설 만한 곳은 보이지 않는다.",
+      "source": "대한경제"
+    },
+    {
+      "expert": "정원오 성동구청장",
+      "quote": "성수동 도시재생의 핵심은 지역의 정체성을 살리면서도 지속가능한 상생의 도시를 만드는 것이었다. 성수동은 성동구가 추진한 다양한 정책들이 결실을 맺어 사람이 모여야 기업이 모이고 지역이 성장한다는 새로운 도시 성장 모델을 보여준 성공사례.",
+      "source": "머니투데이"
+    },
+    {
+      "expert": "쿠시먼앤드웨이크필드 분석",
+      "quote": "쇼핑 시장이 온라인 위주로 형성되면서 리테일 브랜드 입장에선 오프라인에서 일반 매장을 늘리기보다는 팝업스토어 등 체험 공간을 통한 마케팅에 힘쓰게 됐다. 임대 시장에서 대기업은 공간 확보에 주력하고, 영세 자영업자는 어려움을 겪는 양극화 현상이 심화하고 있다.",
+      "source": "중앙일보"
+    }
+  ],
+  "sources": [
+    {
+      "source": "성동구청",
+      "url": "https://www.sd.go.kr",
+      "data_type": "경제적가치분석, 상권분석, 공시지가"
+    },
+    {
+      "source": "한양대학교 산학협력단 (최창규 교수)",
+      "url": "",
+      "data_type": "성수 지역 경제적 가치 분석 용역"
+    },
+    {
+      "source": "한국부동산원",
+      "url": "https://www.reb.or.kr",
+      "data_type": "상가 임대료 상승률"
+    },
+    {
+      "source": "서울시 상권분석서비스",
+      "url": "https://golmok.seoul.go.kr",
+      "data_type": "점포 수, 업종 분석"
+    },
+    {
+      "source": "팝가(POPGA)",
+      "url": "https://popga.co.kr",
+      "data_type": "팝업스토어 통계"
+    },
+    {
+      "source": "스위트스팟(SweetSpot)",
+      "url": "https://sweetspot.co.kr",
+      "data_type": "팝업스토어 트렌드 분석"
+    },
+    {
+      "source": "한국관광공사 한국관광데이터랩",
+      "url": "https://datalab.visitkorea.or.kr",
+      "data_type": "방문객, 지출액"
+    },
+    {
+      "source": "KAOPG (한국도시계획학회)",
+      "url": "https://journal.kaopg.or.kr",
+      "data_type": "성수동 팝업스토어 폐업 영향 연구"
+    },
+    {
+      "source": "LGU+ 데이터플러스 빅데이터",
+      "url": "",
+      "data_type": "외국인 관광객 통계"
+    },
+    {
+      "source": "쿠시먼앤드웨이크필드 코리아",
+      "url": "",
+      "data_type": "상권 전망, 리테일 임차 자문"
+    }
+  ]
+}

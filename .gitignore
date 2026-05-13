@@ -1,0 +1,32 @@
+# OS
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Claude harness — local config
+.claude/
+.omx/
+.agents/
+
+# Worktrees & local scratch
+.claude/worktrees/
+
+# Original raw bundle (kept in docs/source_data instead)
+Kimi_Agent_*.zip
+Kimi_Agent_성수동 팝업스토어 분석/
+
+# Web build artifacts (live copy is at root index.html + docs/)
+web/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Misc
+*.log
