@@ -235,7 +235,6 @@ main { padding: 28px 0 80px; }
   color: var(--text-soft);
   margin-bottom: 32px;
   font-size: 0.95rem;
-  max-width: 720px;
   line-height: 1.6;
 }
 
@@ -567,17 +566,61 @@ tbody tr:hover { background: rgba(194,255,119,0.04); }
   text-transform: uppercase;
   margin-bottom: 4px;
 }
-.chapter-rail .dots { display: flex; align-items: center; gap: 6px; }
-.chapter-rail .dot {
-  flex: 1;
-  height: 4px;
-  border-radius: 2px;
-  background: var(--border-strong);
-  cursor: pointer;
-  transition: background .2s, transform .2s;
+.chapter-rail .rail-track {
+  position: relative;
+  height: 18px;
+  margin: 2px 6px;
 }
-.chapter-rail .dot:hover { background: var(--accent-rim); }
-.chapter-rail .dot.active { background: var(--accent); transform: scaleY(1.6); }
+.chapter-rail .rail-track::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  background: var(--border-strong);
+  border-radius: 999px;
+}
+.chapter-rail .rail-fill {
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  background: var(--accent);
+  border-radius: 999px;
+  width: 0%;
+  transition: width .35s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 0 8px rgba(194,255,119,0.45);
+}
+.chapter-rail .dots {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.chapter-rail .dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1.5px solid var(--border-strong);
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  flex: none;
+  transition: border-color .2s, background .2s, transform .2s;
+}
+.chapter-rail .dot:hover { border-color: var(--accent-rim); }
+.chapter-rail .dot.passed {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+.chapter-rail .dot.active {
+  border-color: var(--accent);
+  background: var(--accent);
+  transform: scale(1.25);
+  box-shadow: 0 0 10px rgba(194,255,119,0.55);
+}
 .chapter-rail .current-label {
   font-family: var(--mono);
   font-size: 0.7rem;
@@ -1068,7 +1111,10 @@ footer a { color: var(--text-soft); }
       <div class="story-sticky">
         <div class="chapter-rail">
           <div class="rail-label">Chapter Progress</div>
-          <div class="dots" id="story-dots"></div>
+          <div class="rail-track">
+            <div class="rail-fill" id="story-fill"></div>
+            <div class="dots" id="story-dots"></div>
+          </div>
           <div class="current-label">
             <span id="story-current-name">CHAPTER 01 · 태동기</span>
             <span><span class="num" id="story-current-num">01</span> / 06</span>
@@ -1548,20 +1594,37 @@ function initStory() {
 
   // Build progress dots (one per chapter)
   const dotsHost = document.getElementById('story-dots');
+  let navLocked = false;
+  const unlockNav = () => { navLocked = false; };
+  window.addEventListener('wheel', unlockNav, { passive: true });
+  window.addEventListener('touchmove', unlockNav, { passive: true });
+  window.addEventListener('keydown', e => {
+    if (['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(e.key)) unlockNav();
+  });
   const dots = steps.map((s, i) => {
     const d = document.createElement('span');
     d.className = 'dot' + (i === 0 ? ' active' : '');
     d.title = (s.querySelector('.chapter')?.textContent || '') + ' — ' + (s.querySelector('h3')?.textContent || '');
     d.addEventListener('click', () => {
+      navLocked = true;
+      activate(i);
       s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Auto-release after 3s as a safety net (e.g. mobile without wheel events)
+      setTimeout(unlockNav, 3000);
     });
     dotsHost.appendChild(d);
     return d;
   });
 
+  const fillEl = document.getElementById('story-fill');
   function activate(idx) {
     steps.forEach((s, i) => s.classList.toggle('active', i === idx));
-    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    dots.forEach((d, i) => {
+      d.classList.toggle('active', i === idx);
+      d.classList.toggle('passed', i < idx);
+    });
+    const total = Math.max(1, dots.length - 1);
+    fillEl.style.width = ((idx / total) * 100).toFixed(2) + '%';
     const step = steps[idx];
     if (step) {
       const chapter = step.querySelector('.chapter')?.textContent || '';
@@ -1574,6 +1637,7 @@ function initStory() {
   activate(0);
 
   const obs = new IntersectionObserver(entries => {
+    if (navLocked) return;
     // pick the entry with highest ratio that is intersecting
     let best = null;
     entries.forEach(e => {
